@@ -1,0 +1,29 @@
+header {
+  width: 100%;
+  background-color: #c9b839;
+
+  .navbar {
+    width: 80%;
+    margin: 0 auto;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    img {
+      width: 110px;
+      object-fit: contain;
+      height: 60px;
+      object-position: 0% 0%;
+    }
+
+    .links {
+      a {
+        text-decoration: none;
+        color: #488169;
+        font-size: 1.123rem;
+        font-weight: 400;
+      }
+    }
+  }
+}

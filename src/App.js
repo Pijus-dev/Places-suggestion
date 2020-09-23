@@ -1,24 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+
+import HomePage from "./pages/homepage/Homepage";
+import LocationPage from "./pages/location/LocationPage";
+import withNavbar from "./components/withNavbar/withNavbar";
+import { Switch, Route } from "react-router-dom";
+
+const LocationPageWithNavbar = withNavbar(LocationPage);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route exact path="/location/:id" component={LocationPageWithNavbar} />
+      </Switch>
     </div>
   );
 }

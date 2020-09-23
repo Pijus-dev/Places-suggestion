@@ -1,0 +1,67 @@
+.backgroundPhoto {
+  height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("https://images.unsplash.com/photo-1491451412778-3e2c8b766720?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  
+  img {
+    width: 110px;
+    object-fit: contain;
+    height: 70px;
+    position: absolute;
+    left: 5%;
+    top: 1.5%;
+  }
+
+  .textBox {
+    position: absolute;
+    height: 140px;
+    width: 550px;
+    left: 45%;
+    top: 50%;
+    transform: translate(-50%, -45%);
+    text-overflow: ellipsis;
+    box-shadow: 0px 0px 2px 2px rgb(248, 245, 245);
+    padding: 15px;
+    background-color: rgba(200, 200, 200, 0.7);
+    border-radius: 8px;
+
+    label {
+      font-size: 1.7rem;
+      font-weight: 400;
+    }
+
+    .searchGroup {
+      position: relative;
+      margin-top: 10px;
+    }
+
+    input {
+      width: 95%;
+      padding: 15px 20px 15px 40px;
+      border-radius: 8px;
+      border: none;
+      letter-spacing: 1.4px;
+      color: silver;
+      font-size: 1.123rem;
+      font-weight: 400;
+
+      &::placeholder {
+        letter-spacing: 1.4px;
+        font-weight: 400;
+        font-size: 1rem;
+      }
+    }
+
+    .searchIcon {
+      position: absolute;
+      top: 33.85%;
+      left: 3%;
+      color: black;
+      font-weight: 300;
+    }
+  }
+}

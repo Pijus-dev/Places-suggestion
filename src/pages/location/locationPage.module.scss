@@ -1,0 +1,43 @@
+.wrapper {
+  width: 100%;
+  border-bottom: 1px solid #eee;
+
+  .locationName {
+    width: 80%;
+    margin: 0 auto;
+    height: 60px;
+
+    .locationBlock {
+      display: flex;
+      align-items: center;
+    }
+
+    .locationIcon {
+      color: rgb(184, 171, 171);
+      font-size: 1.23rem;
+    }
+
+    h4 {
+      margin-left: 6px;
+      color: rgb(184, 171, 171);
+      font-weight: lighter;
+    }
+  }
+}
+
+.productGrid {
+  width: 80%;
+  margin: 30px auto 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-rows: 350px;
+  grid-gap: 1rem;
+
+  @media screen and(max-width: 1030px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media screen and(max-width: 655px) {
+    grid-template-columns: 1fr;
+  }
+}
