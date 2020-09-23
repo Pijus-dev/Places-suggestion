@@ -3,18 +3,20 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import Product from "../../components/product/Product";
 import { useParams } from "react-router-dom";
+import Spinner from "../../components/spinner/spinner";
 
 import styles from "./locationPage.module.scss";
 
 import { GoLocation } from "react-icons/go";
 
-// address name photo rating cuisine price description
 
 const LocationPage = ({ location }) => {
   const locationId = useParams();
 
   const [restaurants, setRestaurants] = useState([]);
   const [attractions, setAttractions] = useState([]);
+
+  const [loading, setLoading] = useState(true);
 
   const fetchRestaurants = async () => {
     const response = await fetch(
@@ -62,7 +64,9 @@ const LocationPage = ({ location }) => {
           };
         }
       );
-    localStorage.setItem("restaraunts", JSON.stringify(restaurantInfo));
+    // localStorage.setItem("restaraunts", JSON.stringify(restaurantInfo));
+    setRestaurants(restaurantInfo);
+    setLoading(false);
   };
 
   const fetchAttractions = async () => {
@@ -92,18 +96,14 @@ const LocationPage = ({ location }) => {
           address,
         };
       });
-    localStorage.setItem("attractions", JSON.stringify(attractionsInfo));
-    // setAttractions(attractionsInfo);
+    // localStorage.setItem("attractions", JSON.stringify(attractionsInfo));
+    setAttractions(attractionsInfo);
+    setLoading(false);
   };
 
   // useEffect(() => {
   //   fetchRestaurants();
   //   fetchAttractions();
-  // }, []);
-
-  // useEffect(() => {
-  //   const parsedData = JSON.parse(localStorage.getItem("restaraunts")) || [];
-  //   setRestaurants(parsedData);
   // }, []);
 
   return (
@@ -118,6 +118,7 @@ const LocationPage = ({ location }) => {
           ) : null}
         </div>
       </div>
+      {/* <Spinner isLoading={loading} /> */}
       <div className="container">
         <h2 style={{ fontWeight: "lighter" }}>Best restaurants:</h2>
       </div>

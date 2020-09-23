@@ -1,3 +1,6 @@
+$main-color: #c0b355;
+$sub-color: #9e933c;
+
 .backgroundPhoto {
   height: 100vh;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
@@ -6,7 +9,7 @@
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
-  
+
   img {
     width: 110px;
     object-fit: contain;
@@ -18,7 +21,7 @@
 
   .textBox {
     position: absolute;
-    height: 140px;
+    height: 155px;
     width: 550px;
     left: 45%;
     top: 50%;
@@ -33,14 +36,9 @@
       font-size: 1.7rem;
       font-weight: 400;
     }
-
-    .searchGroup {
-      position: relative;
-      margin-top: 10px;
-    }
-
-    input {
-      width: 95%;
+   
+    .formInput {
+      width: 100%;
       padding: 15px 20px 15px 40px;
       border-radius: 8px;
       border: none;
@@ -58,10 +56,47 @@
 
     .searchIcon {
       position: absolute;
-      top: 33.85%;
-      left: 3%;
+      top: 42.5%;
+      left: 4.95%;
       color: black;
       font-weight: 300;
+    }
+
+    .autocompleteDropdownContainer {
+      margin-top: 10px;
+      background-color: $main-color;
+      border-radius: 8px;
+      z-index: 9;
+
+      .suggestion {
+        padding-left: 8px;
+        color: white;
+        cursor: pointer;
+        padding: 8px;
+
+        &:hover {
+          background-color: $sub-color;
+          border-radius: 8px;
+        }
+      }
+    }
+
+    .btn {
+      padding: 6px 15px;
+      color: white;
+      font-size: 0.9rem;
+      background-color: $main-color;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      position: absolute;
+      bottom: 8%;
+      right: 3%;
+      z-index: -9;
+
+      &:hover {
+        background-color: $sub-color;
+      }
     }
   }
 }

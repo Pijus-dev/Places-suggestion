@@ -1,0 +1,69 @@
+$main-color: #b4a9a9;
+footer {
+  background-color: black;
+  height: 450px;
+  padding: 25px 0;
+
+  p {
+    color: $main-color;
+    font-size: 0.9rem;
+    font-weight: lighter;
+    letter-spacing: 1.3px;
+    line-height: 1.6;
+    cursor: pointer;
+    position: relative;
+
+    &:after {
+      display: block;
+      content: "";
+      border-bottom: solid 3px white;
+      transform: scaleX(0);
+      transition: transform 250ms ease-in-out;
+      transform-origin: 100% 50%;
+    }
+
+    &:hover:after {
+      transform: scaleX(1);
+      transform-origin: 0 50%;
+    }
+  }
+
+  .footerGrid {
+    display: grid;
+    grid-template-columns: 400px 1fr 1fr;
+    grid-auto-rows: 300px;
+    grid-gap: 1rem;
+
+    h2 {
+      font-size: 1.3rem;
+      color: white;
+    }
+  }
+  .line {
+    width: 100%;
+    height: 1.5px;
+    background-color: $main-color;
+  }
+
+  .footerContent {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    align-items: center;
+  }
+
+  .icons {
+    color: $main-color;
+
+    .icon {
+      margin: 0 8px;
+      cursor: pointer;
+      transition: transform 0.25s ease-out;
+
+      &:hover {
+        transform: scale(1.4);
+      }
+    }
+  }
+}
