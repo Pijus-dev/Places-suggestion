@@ -1,0 +1,14 @@
+.destinations {
+    width: 100%;
+    background-color: #f7f7f7;
+    height: 420px;
+    padding-top: 20px;
+    margin-top: 60px;
+  
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-gap: 1rem;
+      grid-auto-rows: 350px;
+    }
+  }

@@ -5,10 +5,11 @@ import Product from "../../components/product/Product";
 import { useParams } from "react-router-dom";
 import Spinner from "../../components/spinner/spinner";
 
+import Destinations from "../../components/destinations/Destinations";
+
 import styles from "./locationPage.module.scss";
 
 import { GoLocation } from "react-icons/go";
-
 
 const LocationPage = ({ location }) => {
   const locationId = useParams();
@@ -33,7 +34,7 @@ const LocationPage = ({ location }) => {
     const info = await response.json();
     const { data } = info;
     const restaurantInfo = data
-      .slice(0, 16)
+      .slice(0, 25)
       .filter(
         ({ address, rating, description, cuisine }) =>
           address !== undefined &&
@@ -101,16 +102,21 @@ const LocationPage = ({ location }) => {
     setLoading(false);
   };
 
-  // useEffect(() => {
-  //   fetchRestaurants();
-  //   fetchAttractions();
-  // }, []);
+  useEffect(() => {
+    fetchRestaurants();
+    fetchAttractions();
+  }, []);
+
+  useEffect(() => {
+    fetchRestaurants();
+    fetchAttractions();
+  }, [locationId.id]);
 
   return (
     <section>
       <div className={styles.wrapper}>
         <div className={styles.locationName}>
-          {location && location.name ? (
+          {location ? (
             <div className={styles.locationBlock}>
               <GoLocation className={styles.locationIcon} />
               <h4>{location.name}</h4>
@@ -118,29 +124,30 @@ const LocationPage = ({ location }) => {
           ) : null}
         </div>
       </div>
-      {/* <Spinner isLoading={loading} /> */}
+      <Spinner isLoading={loading} />
       <div className="container">
-        <h2 style={{ fontWeight: "lighter" }}>Best restaurants:</h2>
+        <h2>Popular restaurants:</h2>
       </div>
-      <div className={styles.productGrid}>
-        {JSON.parse(localStorage.getItem("restaraunts")).map((props) => {
+      <div className="productGrid">
+        {/* {JSON.parse(localStorage.getItem("restaraunts")).map((props) => {
           return <Product {...props} />;
-        })}
-        {/* {restaurants.map((props) => {
-          return <Product {...props} key={props.name} />;
         })} */}
+        {restaurants.map((props) => {
+          return <Product {...props} key={props.name} />;
+        })}
       </div>
       <div className="container">
-        <h2 style={{ fontWeight: "lighter" }}>Best attractions:</h2>
+        <h2>Popular attractions:</h2>
       </div>
-      <div className={styles.productGrid}>
-        {/* {attractions.map((props) => {
-          return <Product {...props} key={props.name} />;
-        })} */}
-        {JSON.parse(localStorage.getItem("attractions")).map((props) => {
+      <div className="productGrid">
+        {attractions.map((props) => {
           return <Product {...props} key={props.name} />;
         })}
+        {/* {JSON.parse(localStorage.getItem("attractions")).map((props) => {
+          return <Product {...props} key={props.name} />;
+        })} */}
       </div>
+      <Destinations />
     </section>
   );
 };

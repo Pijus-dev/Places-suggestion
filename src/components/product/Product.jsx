@@ -11,7 +11,9 @@ const Product = (props) => {
     address,
     rating,
     web_url,
+    location_string,
     photo: { images },
+    ranking
   } = props;
   return (
     <div className={styles.product}>
@@ -23,7 +25,7 @@ const Product = (props) => {
       </a>
       <div className={styles.productInfo}>
         <h3>{name}</h3>
-        <h4>{description.substring(0, 70)}...</h4>
+        <h4>{description ? description.substring(0, 70) : location_string}</h4>
       </div>
       <div className={styles.price}>
         <span style={{ color: "#F0DC50" }}>{price ?? ""}</span>
@@ -41,6 +43,7 @@ const Product = (props) => {
         ) : (
           <span style={{ marginLeft: "6px" }}>{address}</span>
         )}
+        <span style={{ marginLeft: "8px", color: "#717171" }}>{ranking ? ranking : null}</span>
       </div>
     </div>
   );

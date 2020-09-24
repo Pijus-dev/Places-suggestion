@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-import DatePicker from "react-date-picker";
-
-import { connect } from "react-redux";
+import Product from "../../components/product/Product";
+import { useParams } from "react-router-dom";
+import Calendar from "../../components/calendarPicker/Calendar";
 
 import "./hotelpage.scss";
 
@@ -10,56 +10,68 @@ const Hotelpage = ({ location }) => {
   const [startDate, onChange] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [count, setCount] = useState(1);
+  const [hotels, setHotels] = useState([]);
 
-  if (endDate !== new Date()) {
-    const nights = parseInt((endDate - startDate) / (1000 * 60 * 60 * 24), 10);
-  }
+  const locationId = useParams();
+
+  const fetchHotels = async () => {
+    if (startDate !== new Date()) {
+      const nights = parseInt(
+        (endDate - startDate) / (1000 * 60 * 60 * 24),
+        10
+      );
+      const response = await fetch(
+        `https://tripadvisor1.p.rapidapi.com/hotels/list?offset=0&currency=EUR&limit=30&order=asc&lang=en_US&sort=recommended&location_id=${locationId.id}&adults=${count}&checkin=${startDate}&rooms=1&nights=${nights}`,
+        {
+          method: "GET",
+          headers: {
+            "x-rapidapi-host": "tripadvisor1.p.rapidapi.com",
+            "x-rapidapi-key":
+              "d58457cc4amshb522060edfd8f2ap1eccd6jsn96c470d9bda1",
+          },
+        }
+      );
+      const info = await response.json();
+      const { data } = info;
+      const hotelInfo = data
+        .slice(1, 20)
+        .map(({ location_string, price, name, photo, rating, ranking }) => {
+          return {
+            location_string,
+            price,
+            name,
+            photo,
+            rating,
+            ranking,
+          };
+        });
+      setHotels(hotelInfo);
+    }
+  };
+
   return (
     <div>
-      <div className="container">
-        <h2>{location ? location.name : null} Hotels and Places to Stay</h2>
-        <div className="calendar">
-          <div>
-            <DatePicker
-              onChange={onChange}
-              value={startDate}
-              format="yy-MM-dd"
-              className="check-in"
-            />
-            <p>Check-in</p>
-          </div>
-          <div>
-            <DatePicker
-              value={endDate}
-              onChange={(value) => setEndDate(value)}
-              format="yy-MM-dd"
-              className="check-out"
-            />
-            <p>Check-out</p>
-          </div>
-          <div className="count">
-            <div className="people">
-              <span className="icon" onClick={() => setCount(count - 1)}>
-                &#8722;
-              </span>
-              {count}
-              <span className="icon" onClick={() => setCount(count + 1)}>
-                &#43;
-              </span>
-            </div>
-            <p>Adults</p>
-          </div>
-          <button className="check-button">CHECK</button>
-        </div>
+      <div className="background-photo">
+        <Calendar
+          startDate={startDate}
+          endDate={endDate}
+          count={count}
+          setEndDate={setEndDate}
+          onChange={onChange}
+          increaseCount={setCount}
+          decreaseCount={setCount}
+          fetchHotels={fetchHotels}
+        />
       </div>
+      {hotels.length > 0 ? (
+        <div className="productGrid">
+          {hotels.map((props) => {
+            return <Product {...props} key={props.name} />;
+          })}
+        </div>
+      ) : null}
     </div>
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    location: state.location,
-  };
-};
-
-export default connect(mapStateToProps)(Hotelpage);
+export default Hotelpage;

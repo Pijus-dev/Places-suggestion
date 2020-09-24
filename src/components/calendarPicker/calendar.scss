@@ -1,0 +1,72 @@
+.calendar {
+    display: flex;
+    width: 70%;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+
+    .react-date-picker__wrapper {
+      border: none;
+
+      .react-date-picker__inputGroup  {
+        color: white;
+      }
+
+      .react-date-picker__inputGroup__input {
+        color: white;
+      }
+    }
+
+    .check-in {
+      padding: 5px;
+      border-radius: 6px;
+      border: 1.8px solid rgb(77, 156, 77);
+    }
+
+    .check-out {
+      padding: 5px;
+      border-radius: 6px;
+      border: 1.8px solid rgb(168, 65, 65);
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .count {
+      width: 20%;
+      margin-bottom: 4px;
+
+      .people {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        border: 2.3px solid #bda80e;
+        border-radius: 6px;
+        padding: 3.8px 0;
+
+        .icon {
+          font-size: 1.5rem;
+          cursor: pointer;
+          // color: white;
+          font-weight: 400;
+        }
+      }
+    }
+
+    .check-button {
+      width: 16%;
+      padding: 10px 0;
+      background-color: #c9b839;
+      color: white;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-bottom: 20px;
+
+      &:hover {
+        background-color: #a19329;
+      }
+    }
+  }

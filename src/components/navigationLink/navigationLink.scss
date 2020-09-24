@@ -1,0 +1,14 @@
+h4 {
+  font-weight: lighter;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 7px;
+  margin-bottom: 0;
+
+  &:hover {
+    background-color: #e2dede;
+  }
+}
+.active {
+  border-bottom: 1.4px solid black;
+}
