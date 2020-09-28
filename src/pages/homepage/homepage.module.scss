@@ -1,10 +1,9 @@
-$main-color: #c0b355;
-$sub-color: #9e933c;
+@import "../../scss/variables";
 
 .backgroundPhoto {
   height: 100vh;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("https://images.unsplash.com/photo-1491451412778-3e2c8b766720?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
+    url("../../img/homecover.jpeg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -36,7 +35,7 @@ $sub-color: #9e933c;
       font-size: 1.7rem;
       font-weight: 400;
     }
-   
+
     .formInput {
       width: 100%;
       padding: 15px 20px 15px 40px;
@@ -62,25 +61,6 @@ $sub-color: #9e933c;
       font-weight: 300;
     }
 
-    .autocompleteDropdownContainer {
-      margin-top: 10px;
-      background-color: $main-color;
-      border-radius: 8px;
-      z-index: 9;
-
-      .suggestion {
-        padding-left: 8px;
-        color: white;
-        cursor: pointer;
-        padding: 8px;
-
-        &:hover {
-          background-color: $sub-color;
-          border-radius: 8px;
-        }
-      }
-    }
-
     .btn {
       padding: 6px 15px;
       color: white;
@@ -95,7 +75,7 @@ $sub-color: #9e933c;
       z-index: -9;
 
       &:hover {
-        background-color: $sub-color;
+        background-color: $main-color-hover;
       }
     }
   }

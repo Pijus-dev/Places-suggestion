@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
-import { FaSearch } from "react-icons/fa";
 import * as actions from "../../redux/location/location.actions";
 import { connect } from "react-redux";
 
-import PlacesAutocomplete from "react-places-autocomplete";
+import Autocomplete from "../../components/autocomplete/autocomplete";
+
 import swal from "sweetalert";
 
 import { withRouter, Link } from "react-router-dom";
@@ -22,34 +22,6 @@ const HomePage = ({ getLocationId, history }) => {
     getLocationId(location, history);
   };
 
-  const renderSuggestion = ({
-    getInputProps,
-    getSuggestionItemProps,
-    suggestions,
-    loading,
-  }) => (
-    <div className="autocomplete-root">
-      <input
-        {...getInputProps()}
-        className={styles.formInput}
-        placeholder="Where to?"
-      />
-      <FaSearch className={styles.searchIcon} />
-      <div className={styles.autocompleteDropdownContainer}>
-        {loading && <div>Loading...</div>}
-        {suggestions.map((suggestion, idx) => (
-          <div
-            {...getSuggestionItemProps(suggestion)}
-            key={idx}
-            style={{ padding: "10px" }}
-          >
-            <span className={styles.suggestion}>{suggestion.description}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-
   return (
     <div className={styles.backgroundPhoto}>
       <Link to="/">
@@ -60,12 +32,12 @@ const HomePage = ({ getLocationId, history }) => {
       </Link>
       <div className={styles.textBox}>
         <label>FIND THE GOOD OUT THERE.</label>
-        <PlacesAutocomplete
-          value={location}
-          onChange={(value) => setLocation(value)}
-        >
-          {renderSuggestion}
-        </PlacesAutocomplete>
+        <Autocomplete
+          location={location}
+          setLocation={setLocation}
+          input={styles.formInput}
+          icon={styles.searchIcon}
+        />
         <button onClick={handleSubmit} className={styles.btn}>
           EXPLPORE
         </button>

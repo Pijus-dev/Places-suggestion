@@ -6,7 +6,7 @@ import "./navigationLink.scss";
 
 const NavigationLink = ({ title, showMenu, handleChange, cities }) => {
   return (
-    <div className>
+    <div className="destinations">
       <h4 onClick={handleChange}>{title}</h4>
       <div className={`${showMenu ? "active" : null}`}></div>
       <div>{cities ? <Dropdown open={showMenu} cities={cities} /> : null}</div>

@@ -1,3 +1,5 @@
+@import "../../scss/variables";
+
 .calendar {
     display: flex;
     width: 70%;
@@ -7,30 +9,25 @@
 
     .react-date-picker__wrapper {
       border: none;
-
-      .react-date-picker__inputGroup  {
-        color: white;
-      }
-
-      .react-date-picker__inputGroup__input {
-        color: white;
-      }
     }
 
     .check-in {
       padding: 5px;
       border-radius: 6px;
-      border: 1.8px solid rgb(77, 156, 77);
+      border: 2.4px solid rgb(77, 156, 77);
+      background-color:  $light-background;
     }
 
     .check-out {
       padding: 5px;
       border-radius: 6px;
-      border: 1.8px solid rgb(168, 65, 65);
+      border: 2.4px solid rgb(168, 65, 65);
+      background-color: $light-background;
     }
 
     p {
       margin: 0;
+      letter-spacing: 1.4px;
     }
 
     .count {
@@ -41,14 +38,14 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
-        border: 2.3px solid #bda80e;
+        border: 2.3px solid $main-color;
         border-radius: 6px;
         padding: 3.8px 0;
+        background-color: $light-background;
 
         .icon {
           font-size: 1.5rem;
           cursor: pointer;
-          // color: white;
           font-weight: 400;
         }
       }
@@ -57,7 +54,7 @@
     .check-button {
       width: 16%;
       padding: 10px 0;
-      background-color: #c9b839;
+      background-color: $main-color;
       color: white;
       font-size: 1rem;
       border: none;
@@ -66,7 +63,7 @@
       margin-bottom: 20px;
 
       &:hover {
-        background-color: #a19329;
+        background-color: $main-color-hover;
       }
     }
   }

@@ -102,15 +102,15 @@ const LocationPage = ({ location }) => {
     setLoading(false);
   };
 
-  useEffect(() => {
-    fetchRestaurants();
-    fetchAttractions();
-  }, []);
+  // useEffect(() => {
+  //   fetchRestaurants();
+  //   fetchAttractions();
+  // }, []);
 
-  useEffect(() => {
-    fetchRestaurants();
-    fetchAttractions();
-  }, [locationId.id]);
+  // useEffect(() => {
+  //   fetchRestaurants();
+  //   fetchAttractions();
+  // }, [locationId.id]);
 
   return (
     <section>
@@ -124,30 +124,29 @@ const LocationPage = ({ location }) => {
           ) : null}
         </div>
       </div>
-      <Spinner isLoading={loading} />
+      {/* <Spinner isLoading={loading} /> */}
       <div className="container">
         <h2>Popular restaurants:</h2>
       </div>
       <div className="productGrid">
-        {/* {JSON.parse(localStorage.getItem("restaraunts")).map((props) => {
+        {JSON.parse(localStorage.getItem("restaraunts")).map((props) => {
           return <Product {...props} />;
-        })} */}
-        {restaurants.map((props) => {
-          return <Product {...props} key={props.name} />;
         })}
+        {/* {restaurants.map((props) => {
+          return <Product {...props} key={props.name} />;
+        })} */}
       </div>
       <div className="container">
         <h2>Popular attractions:</h2>
       </div>
       <div className="productGrid">
-        {attractions.map((props) => {
-          return <Product {...props} key={props.name} />;
-        })}
-        {/* {JSON.parse(localStorage.getItem("attractions")).map((props) => {
+        {/* {attractions.map((props) => {
           return <Product {...props} key={props.name} />;
         })} */}
+        {JSON.parse(localStorage.getItem("attractions")).map((props) => {
+          return <Product {...props} key={props.name} />;
+        })}
       </div>
-      <Destinations />
     </section>
   );
 };

@@ -1,6 +1,8 @@
+@import "../../scss/variables";
+
 header {
   width: 100%;
-  background-color: #c9b839;
+  background-color: $main-color;
 
   .navbar {
     width: 80%;
@@ -10,11 +12,14 @@ header {
     justify-content: space-between;
     align-items: center;
 
-    img {
+    .logo {
       width: 110px;
-      object-fit: contain;
       height: 60px;
-      object-position: 0% 0%;
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
     }
 
     .links {
@@ -23,6 +28,7 @@ header {
         color: #488169;
         font-size: 1.123rem;
         font-weight: 400;
+        margin-right: 8px;
       }
     }
   }
