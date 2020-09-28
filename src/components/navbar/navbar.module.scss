@@ -23,12 +23,44 @@ header {
     }
 
     .links {
+      display: flex;
+      align-items: center;
+      height: 70px;
+      position: relative;
+      justify-content: space-between;
+      width: 45%;
+
+      .searchInput {
+        margin-top: 3px;
+        width: 100%;
+        padding: 6px 25px;
+        border-radius: 8px;
+        border: none;
+        letter-spacing: 1.4px;
+        color: silver;
+        font-size: .9rem;
+        font-weight: 400;
+
+        &::placeholder {
+          letter-spacing: 1.4px;
+          font-weight: 400;
+          font-size: 14px;
+        }
+      }
+
+      .icon {
+        position: absolute;
+        left: .8%;
+        bottom: 37.5%;
+        font-size: 14px;
+        color: #b4a9a9;
+      }
+
       a {
         text-decoration: none;
         color: #488169;
         font-size: 1.123rem;
         font-weight: 400;
-        margin-right: 8px;
       }
     }
   }

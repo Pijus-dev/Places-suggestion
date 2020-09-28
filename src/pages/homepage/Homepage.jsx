@@ -22,6 +22,7 @@ const HomePage = ({ getLocationId, history }) => {
     getLocationId(location, history);
   };
 
+
   return (
     <div className={styles.backgroundPhoto}>
       <Link to="/">
@@ -37,6 +38,7 @@ const HomePage = ({ getLocationId, history }) => {
           setLocation={setLocation}
           input={styles.formInput}
           icon={styles.searchIcon}
+          container={styles.autocompleteDropdownContainer}
         />
         <button onClick={handleSubmit} className={styles.btn}>
           EXPLPORE

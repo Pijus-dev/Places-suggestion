@@ -5,22 +5,24 @@ import PlacesAutocomplete from "react-places-autocomplete";
 
 import styles from "./autocomplete.module.scss";
 
-const Autocomplete = ({ location, setLocation, input, icon}) => {
-
+const Autocomplete = ({
+  location,
+  setLocation,
+  input,
+  icon,
+  container,
+  submit,
+}) => {
   const renderSuggestion = ({
     getInputProps,
     getSuggestionItemProps,
     suggestions,
     loading,
   }) => (
-    <div className="autocomplete-root">
-      <input
-        {...getInputProps()}
-        className={input}
-        placeholder="Where to?"
-      />
+    <div className={styles.autocompleteRoot}>
+      <input {...getInputProps()} className={input} placeholder="Where to?" />
       <FaSearch className={icon} />
-      <div className={styles.autocompleteDropdownContainer}>
+      <div className={container}>
         {loading && <div>Loading...</div>}
         {suggestions.map((suggestion, idx) => (
           <div
@@ -36,12 +38,14 @@ const Autocomplete = ({ location, setLocation, input, icon}) => {
   );
 
   return (
-    <PlacesAutocomplete
-      value={location}
-      onChange={(value) => setLocation(value)}
-    >
-      {renderSuggestion}
-    </PlacesAutocomplete>
+    <form onSubmit={submit}>
+      <PlacesAutocomplete
+        value={location}
+        onChange={(value) => setLocation(value)}
+      >
+        {renderSuggestion}
+      </PlacesAutocomplete>
+    </form>
   );
 };
 

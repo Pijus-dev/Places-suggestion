@@ -17,7 +17,7 @@ const Product = (props) => {
   } = props;
   return (
     <div className={styles.product}>
-      <a href={web_url}>
+      <a href={web_url} target="_blank">
         <div
           className={styles.productPhoto}
           style={{ backgroundImage: `url(${images.original.url})` }}

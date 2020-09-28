@@ -1,20 +1,18 @@
 @import "../../scss/variables";
 
-.autocompleteDropdownContainer {
+.autocompleteRoot {
   margin-top: 10px;
-  background-color: $main-color;
-  border-radius: 8px;
-  z-index: 9;
 
-  .suggestion {
-    padding-left: 8px;
-    color: white;
-    cursor: pointer;
-    padding: 8px;
+    .suggestion {
+      padding-left: 8px;
+      color: white;
+      cursor: pointer;
+      padding: 8px;
 
-    &:hover {
-      background-color: $main-color-hover;
-      border-radius: 8px;
+      &:hover {
+        background-color: $main-color-hover;
+        border-radius: 8px;
+      }
     }
   }
-}
+

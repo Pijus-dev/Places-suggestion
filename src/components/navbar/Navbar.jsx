@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
+
+import { Link, useParams, withRouter } from "react-router-dom";
+import { FaSearch } from "react-icons/fa";
+import { connect } from "react-redux";
+import * as actions from "../../redux/location/location.actions";
 
 import styles from "./navbar.module.scss";
 
-import { Link, useParams } from "react-router-dom";
-
-const Navbar = () => {
+const Navbar = ({ getLocationId, history }) => {
   const location = useParams();
+  const [place, setPLace] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    getLocationId(place, history);
+
+    setPLace("");
+  };
   return (
     <header>
       <nav className={styles.navbar}>
@@ -18,6 +30,17 @@ const Navbar = () => {
           </div>
         </Link>
         <div className={styles.links}>
+          <div>
+            <form onSubmit={handleSubmit}>
+              <input
+                type="text"
+                className={styles.searchInput}
+                placeholder="type here"
+                onChange={(e) => setPLace(e.target.value)}
+              />
+            </form>
+            <FaSearch className={styles.icon} />
+          </div>
           <Link to="/" style={{ marginRight: "10px" }}>
             Home
           </Link>
@@ -28,4 +51,4 @@ const Navbar = () => {
     </header>
   );
 };
-export default Navbar;
+export default connect(null, actions)(withRouter(Navbar));
