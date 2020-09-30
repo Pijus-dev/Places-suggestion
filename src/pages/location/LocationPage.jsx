@@ -76,14 +76,14 @@ const LocationPage = ({ location }) => {
           return <Product {...props} key={props.name} />;
         })}
       </div>
-        <iframe
-          title="location map"
-          width="100%"
-          height="350"
-          frameborder="0"
-          src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GOOGLE_KEY}&q=Kaunas`}
-          allowFullScreen
-        ></iframe>
+      <iframe
+        title="location map"
+        width="100%"
+        height="350"
+        frameborder="0"
+        src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GOOGLE_KEY}&q=Kaunas`}
+        allowFullScreen
+      ></iframe>
     </section>
   );
 };

@@ -1,4 +1,5 @@
 import React from "react";
+import { useSpring, animated } from "react-spring";
 
 import styles from "./product.module.scss";
 
@@ -13,11 +14,16 @@ const Product = (props) => {
     web_url,
     location_string,
     photo: { images },
-    ranking
+    ranking,
   } = props;
+  const propStyles = useSpring({
+    opacity: 1,
+    from: { opacity: 0 },
+    config: { duration: 1000 },
+  });
   return (
-    <div className={styles.product}>
-      <a href={web_url} target="_blank">
+    <animated.div style={propStyles} className={styles.product}>
+      <a href={web_url} target="_blank" rel="noopener noreferrer">
         <div
           className={styles.productPhoto}
           style={{ backgroundImage: `url(${images.original.url})` }}
@@ -43,9 +49,11 @@ const Product = (props) => {
         ) : (
           <span style={{ marginLeft: "6px" }}>{address}</span>
         )}
-        <span style={{ marginLeft: "8px", color: "#717171" }}>{ranking ? ranking : null}</span>
+        <span style={{ marginLeft: "8px", color: "#717171" }}>
+          {ranking ? ranking : null}
+        </span>
       </div>
-    </div>
+    </animated.div>
   );
 };
 export default Product;

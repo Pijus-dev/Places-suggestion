@@ -4,6 +4,8 @@ import { Link, useParams, withRouter } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import { connect } from "react-redux";
 import * as actions from "../../redux/location/location.actions";
+import { useTransition, animated } from "react-spring";
+
 import MobileNavigation from "../mobileNavigation/MobileNavigation";
 
 import styles from "./navbar.module.scss";
@@ -21,6 +23,19 @@ const Navbar = ({ getLocationId, history }) => {
 
     setPLace("");
   };
+  const transitions = useTransition(showMenu, null, {
+    from: {
+      opacity: 0,
+      transform: "translateX(-100%)",
+      height: "90vh",
+    },
+    enter: {
+      opacity: 1,
+      transform: "translateX(0)",
+      height: "90vh",
+    },
+    leave: { opacity: 0, transform: "translateX(100%)", height: "90vh" },
+  });
   return (
     <header>
       <nav className={styles.navbar}>
@@ -60,7 +75,13 @@ const Navbar = ({ getLocationId, history }) => {
           </div>
         </div>
       </nav>
-      {showMenu ? <MobileNavigation /> : null}
+      {transitions.map(({ item, key, props }) =>
+        item ? (
+          <animated.div key={key} style={props}>
+            <MobileNavigation />
+          </animated.div>
+        ) : null
+      )}
     </header>
   );
 };
