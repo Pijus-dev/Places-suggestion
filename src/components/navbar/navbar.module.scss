@@ -2,7 +2,15 @@
 
 header {
   width: 100%;
-  background-color: $main-color;
+  // background-color: $main-color;
+  background-color: #488169;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+
+  @media screen and(max-width: 883px) {
+    background-color: #01132c;
+  }
 
   .navbar {
     width: 80%;
@@ -30,6 +38,14 @@ header {
       justify-content: space-between;
       width: 45%;
 
+      @media screen and(max-width: 1341px) {
+        width: 55%;
+      }
+
+      @media screen and(max-width: 1098px) {
+        width: 70%;
+      }
+
       .searchInput {
         margin-top: 3px;
         width: 100%;
@@ -38,7 +54,7 @@ header {
         border: none;
         letter-spacing: 1.4px;
         color: silver;
-        font-size: .9rem;
+        font-size: 0.9rem;
         font-weight: 400;
 
         &::placeholder {
@@ -46,21 +62,68 @@ header {
           font-weight: 400;
           font-size: 14px;
         }
+
+        @media screen and(max-width: 883px) {
+          display: none;
+        }
       }
 
       .icon {
         position: absolute;
-        left: .8%;
+        left: 0.8%;
         bottom: 37.5%;
         font-size: 14px;
         color: #b4a9a9;
+
+        @media screen and(max-width: 883px) {
+          display: none;
+        }
       }
 
       a {
         text-decoration: none;
-        color: #488169;
+        color: #d6e9e1;
         font-size: 1.123rem;
         font-weight: 400;
+
+        @media screen and(max-width: 883px) {
+          display: none;
+        }
+      }
+    }
+
+    .toggler {
+      display: none;
+      height: 44px;
+      width: 44px;
+      padding: 10px;
+      justify-content: space-around;
+      flex-direction: column;
+      align-items: stretch;
+      cursor: pointer;
+      z-index: 100;
+
+      @media screen and(max-width: 883px) {
+        display: flex;
+      }
+
+      .togglerLine {
+        display: block;
+        height: 2px;
+        background: #a59e9e;
+      }
+    }
+
+    .active {
+      align-items: center;
+      justify-content: center;
+      .togglerLine {
+        display: none;
+      }
+      &:after {
+        content: "✕";
+        color: #a59e9e;
+        font-size: 1.5rem;
       }
     }
   }

@@ -31,9 +31,26 @@
     background-color: rgba(200, 200, 200, 0.7);
     border-radius: 8px;
 
+    @media screen and (max-width: 883px) {
+      width: 450px;
+    }
+
+    @media screen and (max-width: 530px) {
+      width: 400px;
+      left: 50%;
+    }
+
+    @media screen and (max-width: 414px) {
+      width: 300px;
+    }
+
     label {
       font-size: 1.7rem;
       font-weight: 400;
+
+      @media screen and (max-width: 414px) {
+        font-size: 0.9rem;
+      }
     }
 
     .formInput {
@@ -55,10 +72,15 @@
 
     .searchIcon {
       position: absolute;
-      top: 42.5%;
-      left: 4.95%;
+      top: 47%;
+      left: 4.5%;
       color: black;
       font-weight: 300;
+
+      @media screen and (max-width: 414px) {
+        top: 38.5%;
+        left: 9%
+      }
     }
 
     .autocompleteDropdownContainer {

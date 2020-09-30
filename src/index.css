@@ -24,12 +24,16 @@ h2 {
   grid-auto-rows: 350px;
   grid-gap: 1rem;
   padding-bottom: 30px;
-
 }
-    /* @media screen and(max-width: 1030px) {
-      grid-template-columns: 1fr 1fr;
-    }
-  
-    @media screen and(max-width: 655px) {
-      grid-template-columns: 1fr;
-    } */
+
+@media screen and (max-width: 1030px) {
+  .productGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 655px) {
+  .productGrid {
+    grid-template-columns: 1fr;
+  }
+}

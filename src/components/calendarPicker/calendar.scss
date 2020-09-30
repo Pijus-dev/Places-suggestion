@@ -7,10 +7,18 @@
     align-items: center;
     margin-top: 10px;
 
+    @media screen and (max-width: 1027px) {
+      width: 80%;
+    }
+
+    @media screen and (max-width: 1027px) {
+      width: 90%;
+    }
+
     .react-date-picker__wrapper {
       border: none;
     }
-
+    
     .check-in {
       padding: 5px;
       border-radius: 6px;

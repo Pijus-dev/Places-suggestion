@@ -15,6 +15,7 @@ export const getLocationId = (location, history) => async (dispatch) => {
   );
   const info = await response.json();
   const { data } = info;
+
   const { result_object } = data[0];
   const { location_id, name } = result_object;
 

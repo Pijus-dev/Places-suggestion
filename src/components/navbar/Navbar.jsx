@@ -4,12 +4,15 @@ import { Link, useParams, withRouter } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import { connect } from "react-redux";
 import * as actions from "../../redux/location/location.actions";
+import MobileNavigation from "../mobileNavigation/MobileNavigation";
 
 import styles from "./navbar.module.scss";
 
 const Navbar = ({ getLocationId, history }) => {
   const location = useParams();
   const [place, setPLace] = useState("");
+
+  const [showMenu, setShowMenu] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,7 +27,7 @@ const Navbar = ({ getLocationId, history }) => {
         <Link to="/">
           <div className={styles.logo}>
             <img
-              src="https://scontent.fvno2-1.fna.fbcdn.net/v/t1.15752-9/120064324_2724045487884417_3893922868058602583_n.png?_nc_cat=111&_nc_sid=ae9488&_nc_ohc=QfbniePK660AX-MFbsB&_nc_ht=scontent.fvno2-1.fna&oh=1c13df48e2ba9b56325504f398c3119f&oe=5F8F6C51"
+              src="https://scontent.fvno2-1.fna.fbcdn.net/v/t1.15752-9/120492533_365145064613137_2379704107000263193_n.png?_nc_cat=108&_nc_sid=ae9488&_nc_ohc=hUZ7s-gO5JkAX8cstoI&_nc_ht=scontent.fvno2-1.fna&oh=355a4592bc5753adbe1ad52e4a5baaf8&oe=5F976DDB"
               alt=""
             />
           </div>
@@ -45,9 +48,19 @@ const Navbar = ({ getLocationId, history }) => {
             Home
           </Link>
           <Link to={`/location/${location.id}`}>Places</Link>
+          <Link to={`/location/${location.id}/flights`}>Flights</Link>
           <Link to={`/location/${location.id}/hotel`}>Book hotel</Link>
+          <div
+            className={`${styles.toggler} ${showMenu ? styles.active : ""}`}
+            onClick={() => setShowMenu(!showMenu)}
+          >
+            <span className={styles.togglerLine}></span>
+            <span className={styles.togglerLine}></span>
+            <span className={styles.togglerLine}></span>
+          </div>
         </div>
       </nav>
+      {showMenu ? <MobileNavigation /> : null}
     </header>
   );
 };

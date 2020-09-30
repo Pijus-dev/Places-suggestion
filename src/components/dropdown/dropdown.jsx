@@ -8,15 +8,16 @@ import { withRouter } from "react-router-dom";
 import * as actions from "../../redux/location/location.actions";
 
 const Dropdown = ({ cities, open, history, getLocationId }) => {
-  // const location = useParams();
   return (
     <div className={styles.cities}>
       {open
-        ? cities.map(({ name }) => {
+        ? cities.map(({ name }, idx) => {
             return (
-              <div>
+              <div key={idx}>
                 {name.map((city) => (
-                  <p onClick={() => getLocationId(city, history)}>{city}</p>
+                  <p key={city} onClick={() => getLocationId(city, history)}>
+                    {city}
+                  </p>
                 ))}
               </div>
             );

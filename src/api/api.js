@@ -13,7 +13,6 @@ export const fetchRestaurants = async (id) => {
     const info = await response.json();
     const { data } = info;
     const restaurantInfo = data
-      .slice(0, 25)
       .filter(
         ({ address, rating, description, cuisine }) =>
           address !== undefined &&
@@ -62,7 +61,6 @@ export const fetchRestaurants = async (id) => {
     const info = await response.json();
     const { data } = info;
     const attractionsInfo = data
-      .slice(1, 25)
       .filter(({ description, rating }) => description !== "" && rating > 3.5)
       .map(({ description, rating, photo, name, web_url, address }) => {
         return {

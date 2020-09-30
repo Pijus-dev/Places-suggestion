@@ -31,15 +31,15 @@ const LocationPage = ({ location }) => {
     setLoading(false);
   };
 
-  useEffect(() => {
-    getRestaurants();
-    getAttractions();
-  }, []);
+  // useEffect(() => {
+  //   getRestaurants();
+  //   getAttractions();
+  // }, []);
 
-  useEffect(() => {
-    getRestaurants();
-    getAttractions();
-  }, [locationId.id]);
+  // useEffect(() => {
+  //   getRestaurants();
+  //   getAttractions();
+  // }, [locationId.id]);
 
   return (
     <section>
@@ -53,29 +53,37 @@ const LocationPage = ({ location }) => {
           ) : null}
         </div>
       </div>
-      <Spinner isLoading={loading} />
+      {/* <Spinner isLoading={loading} /> */}
       <div className="container">
         <h2>Popular restaurants:</h2>
       </div>
       <div className="productGrid">
-        {/* {JSON.parse(localStorage.getItem("restaraunts")).map((props) => {
-          return <Product {...props} />;
-        })} */}
-        {restaurants.map((props) => {
+        {JSON.parse(localStorage.getItem("restaraunts")).map((props) => {
           return <Product {...props} key={props.name} />;
         })}
+        {/* {restaurants.map((props) => {
+          return <Product {...props} key={props.name} />;
+        })} */}
       </div>
       <div className="container">
         <h2>Popular attractions:</h2>
       </div>
       <div className="productGrid">
-        {attractions.map((props) => {
-          return <Product {...props} key={props.name} />;
-        })}
-        {/* {JSON.parse(localStorage.getItem("attractions")).map((props) => {
+        {/* {attractions.map((props) => {
           return <Product {...props} key={props.name} />;
         })} */}
+        {JSON.parse(localStorage.getItem("attractions")).map((props) => {
+          return <Product {...props} key={props.name} />;
+        })}
       </div>
+        <iframe
+          title="location map"
+          width="100%"
+          height="350"
+          frameborder="0"
+          src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GOOGLE_KEY}&q=Kaunas`}
+          allowFullScreen
+        ></iframe>
     </section>
   );
 };
