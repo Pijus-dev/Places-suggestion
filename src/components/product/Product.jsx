@@ -15,6 +15,7 @@ const Product = (props) => {
     location_string,
     photo: { images },
     ranking,
+    active,
   } = props;
   const propStyles = useSpring({
     opacity: 1,
@@ -25,7 +26,9 @@ const Product = (props) => {
     <animated.div style={propStyles} className={styles.product}>
       <a href={web_url} target="_blank" rel="noopener noreferrer">
         <div
-          className={styles.productPhoto}
+          className={`productBackgroundPhoto  ${
+            !active ? styles.productPhoto : styles.productGridPhoto
+          }`}
           style={{ backgroundImage: `url(${images.original.url})` }}
         ></div>
       </a>

@@ -53,7 +53,7 @@ const Navbar = ({ getLocationId, history }) => {
               <input
                 type="text"
                 className={styles.searchInput}
-                placeholder="type here"
+                placeholder="e.g. London"
                 onChange={(e) => setPLace(e.target.value)}
               />
             </form>
@@ -64,7 +64,7 @@ const Navbar = ({ getLocationId, history }) => {
           </Link>
           <Link to={`/location/${location.id}`}>Places</Link>
           <Link to={`/location/${location.id}/flights`}>Flights</Link>
-          <Link to={`/location/${location.id}/hotel`}>Book hotel</Link>
+          <Link to={`/location/${location.id}/hotel`}>Hotels</Link>
           <div
             className={`${styles.toggler} ${showMenu ? styles.active : ""}`}
             onClick={() => setShowMenu(!showMenu)}

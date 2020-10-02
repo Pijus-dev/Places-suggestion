@@ -5,6 +5,8 @@ import Product from "../../components/product/Product";
 import { useParams } from "react-router-dom";
 import Spinner from "../../components/spinner/spinner";
 
+import { BsFillGridFill, BsFillGrid3X3GapFill } from "react-icons/bs";
+
 import { fetchRestaurants, fetchAttractions } from "../../api/api";
 
 import styles from "./locationPage.module.scss";
@@ -16,6 +18,7 @@ const LocationPage = ({ location }) => {
 
   const [restaurants, setRestaurants] = useState([]);
   const [attractions, setAttractions] = useState([]);
+  const [active, setActive] = useState(false);
 
   const [loading, setLoading] = useState(true);
 
@@ -25,21 +28,26 @@ const LocationPage = ({ location }) => {
     setRestaurants(data);
     setLoading(false);
   };
+
+  const toggleGrid = () => {
+    setActive(!active);
+  };
+
   const getAttractions = async () => {
     const data = await fetchAttractions(locationId.id);
     setAttractions(data);
     setLoading(false);
   };
 
-  // useEffect(() => {
-  //   getRestaurants();
-  //   getAttractions();
-  // }, []);
+  useEffect(() => {
+    getRestaurants();
+    getAttractions();
+  }, []);
 
-  // useEffect(() => {
-  //   getRestaurants();
-  //   getAttractions();
-  // }, [locationId.id]);
+  useEffect(() => {
+    getRestaurants();
+    getAttractions();
+  }, [locationId.id]);
 
   return (
     <section>
@@ -53,37 +61,47 @@ const LocationPage = ({ location }) => {
           ) : null}
         </div>
       </div>
-      {/* <Spinner isLoading={loading} /> */}
+      <Spinner isLoading={loading} />
       <div className="container">
+        {active ? (
+          <BsFillGrid3X3GapFill
+            className={styles.gridIcon}
+            onClick={toggleGrid}
+          />
+        ) : (
+          <BsFillGridFill className={styles.gridIcon} onClick={toggleGrid} />
+        )}
         <h2>Popular restaurants:</h2>
       </div>
-      <div className="productGrid">
-        {JSON.parse(localStorage.getItem("restaraunts")).map((props) => {
-          return <Product {...props} key={props.name} />;
-        })}
-        {/* {restaurants.map((props) => {
-          return <Product {...props} key={props.name} />;
+      <div className={active ? "productNewGrid" : "productGrid"}>
+        {/* {JSON.parse(localStorage.getItem("restaraunts")).map((props) => {
+          return <Product {...props} key={props.name} active={active} />;
         })} */}
+        {restaurants.map((props) => {
+          return <Product {...props} key={props.name} active={active} />;
+        })}
       </div>
       <div className="container">
         <h2>Popular attractions:</h2>
       </div>
-      <div className="productGrid">
-        {/* {attractions.map((props) => {
-          return <Product {...props} key={props.name} />;
-        })} */}
-        {JSON.parse(localStorage.getItem("attractions")).map((props) => {
-          return <Product {...props} key={props.name} />;
+      <div className={active ? "productNewGrid" : "productGrid"}>
+        {attractions.map((props) => {
+          return <Product {...props} key={props.name} active={active}  />;
         })}
+        {/* {JSON.parse(localStorage.getItem("attractions")).map((props) => {
+          return <Product {...props} key={props.name} active={active} />;
+        })} */}
       </div>
-      <iframe
-        title="location map"
-        width="100%"
-        height="350"
-        frameborder="0"
-        src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GOOGLE_KEY}&q=Kaunas`}
-        allowFullScreen
-      ></iframe>
+      {location ? (
+        <iframe
+          title="location map"
+          width="100%"
+          height="350"
+          frameBorder="0"
+          src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GOOGLE_KEY}&q=${location.name}`}
+          allowFullScreen
+        ></iframe>
+      ) : null}
     </section>
   );
 };

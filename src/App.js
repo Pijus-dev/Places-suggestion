@@ -18,14 +18,15 @@ function App() {
     config: { duration: 550 },
     from: {
       opacity: 0,
-      transform: "translateX(-100%)",
+      transform: "translateX(-40%)",
     },
     enter: {
       opacity: 1,
       transform: "translateX(0%)",
     },
-    leave: { opacity: 0, transform: "translateX(100%)" },
+    leave: { opacity: 0, transform: "translateY(70%)" },
   });
+
   return transitions.map(({ item: location, props, key }) => (
     <animated.div key={key} style={props}>
       <Switch location={location}>
