@@ -63,7 +63,6 @@ const Navbar = ({ getLocationId, history }) => {
             Home
           </Link>
           <Link to={`/location/${location.id}`}>Places</Link>
-          <Link to={`/location/${location.id}/flights`}>Flights</Link>
           <Link to={`/location/${location.id}/hotel`}>Hotels</Link>
           <div
             className={`${styles.toggler} ${showMenu ? styles.active : ""}`}

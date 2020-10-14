@@ -12,7 +12,7 @@ const Footer = () => (
       <div className={styles.footerGrid}>
         <div>
           <h2>About</h2>
-          <p>
+          <p className="aboutText  aboutText--thin">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
             quas voluptas possimus. Eos eveniet obcaecati quidem? Cumque officia
             nam ab, error doloremque atque accusantium dolorum amet libero

@@ -34,7 +34,9 @@ const Product = (props) => {
       </a>
       <div className={styles.productInfo}>
         <h3>{name}</h3>
-        <h4>{description ? description.substring(0, 70) : location_string}</h4>
+        <h4>
+          {description ? description.substring(0, 70) : location_string}
+        </h4>
       </div>
       <div className={styles.price}>
         <span style={{ color: "#F0DC50" }}>{price ?? ""}</span>

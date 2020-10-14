@@ -41,11 +41,6 @@ function App() {
           path={`/location/:id/hotel`}
           component={HotelPageWithNavbarAndFooter}
         />
-        <Route
-          exact
-          path={`/location/:id/flights`}
-          component={FlightsPageWithNavbar}
-        />
       </Switch>
     </animated.div>
   ));
