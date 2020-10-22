@@ -98,7 +98,7 @@ const LocationPage = ({ location }) => {
           width="100%"
           height="350"
           frameBorder="0"
-          src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GOOGLE_KEY}&q=${location.name}`}
+          src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyC9wJg8V8gzug1VSDmNtYDRWD3m6os1qW0&q=${location.name}`}
           allowFullScreen
         ></iframe>
       )}
