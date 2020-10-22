@@ -5,7 +5,7 @@ export const fetchRestaurants = async (id) => {
       method: "GET",
       headers: {
         "x-rapidapi-host": "tripadvisor1.p.rapidapi.com",
-        "x-rapidapi-key": "d58457cc4amshb522060edfd8f2ap1eccd6jsn96c470d9bda1",
+        "x-rapidapi-key": "ba007034a5mshf6a03d14afcb21bp1eede9jsnd5b8f0f11eee",
       },
     }
   );
@@ -52,7 +52,7 @@ export const fetchAttractions = async (id) => {
       method: "GET",
       headers: {
         "x-rapidapi-host": "tripadvisor1.p.rapidapi.com",
-        "x-rapidapi-key": "d58457cc4amshb522060edfd8f2ap1eccd6jsn96c470d9bda1",
+        "x-rapidapi-key": "ba007034a5mshf6a03d14afcb21bp1eede9jsnd5b8f0f11eee",
       },
     }
   );
@@ -84,7 +84,7 @@ export const fetchHotels = async (startDate, endDate, id, count) => {
         headers: {
           "x-rapidapi-host": "tripadvisor1.p.rapidapi.com",
           "x-rapidapi-key":
-            "d58457cc4amshb522060edfd8f2ap1eccd6jsn96c470d9bda1",
+            "ba007034a5mshf6a03d14afcb21bp1eede9jsnd5b8f0f11eee",
         },
       }
     );

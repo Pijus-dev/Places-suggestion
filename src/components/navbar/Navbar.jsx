@@ -41,10 +41,7 @@ const Navbar = ({ getLocationId, history }) => {
       <nav className={styles.navbar}>
         <Link to="/">
           <div className={styles.logo}>
-            <img
-              src="https://scontent.fvno2-1.fna.fbcdn.net/v/t1.15752-9/120492533_365145064613137_2379704107000263193_n.png?_nc_cat=108&_nc_sid=ae9488&_nc_ohc=hUZ7s-gO5JkAX8cstoI&_nc_ht=scontent.fvno2-1.fna&oh=355a4592bc5753adbe1ad52e4a5baaf8&oe=5F976DDB"
-              alt=""
-            />
+            <img src={require("../../img/logo.png")} alt="places logo" />
           </div>
         </Link>
         <div className={styles.links}>

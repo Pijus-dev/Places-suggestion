@@ -61,7 +61,7 @@ const LocationPage = ({ location }) => {
           ) : null}
         </div>
       </div>
-      {/* <Spinner isLoading={loading} /> */}
+      <Spinner isLoading={loading} />
       <div className="container">
         {active ? (
           <BsFillGrid3X3GapFill
@@ -74,33 +74,34 @@ const LocationPage = ({ location }) => {
         <h2>Popular restaurants:</h2>
       </div>
       <div className={active ? "productNewGrid" : "productGrid"}>
-        {JSON.parse(localStorage.getItem("restaraunts")).map((props) => {
-          return <Product {...props} key={props.name} active={active} />;
-        })}
-        {/* {restaurants.map((props) => {
+        {/* {JSON.parse(localStorage.getItem("restaraunts")).map((props) => {
           return <Product {...props} key={props.name} active={active} />;
         })} */}
+        {restaurants.map((props) => {
+          return <Product {...props} key={props.name} active={active} />;
+        })}
       </div>
       <div className="container">
         <h2>Popular attractions:</h2>
       </div>
       <div className={active ? "productNewGrid" : "productGrid"}>
-        {/* {attractions.map((props) => {
-          return <Product {...props} key={props.name} active={active}  />;
-        })} */}
-        {JSON.parse(localStorage.getItem("attractions")).map((props) => {
+        {attractions.map((props) => {
           return <Product {...props} key={props.name} active={active} />;
         })}
+        {/* {JSON.parse(localStorage.getItem("attractions")).map((props) => {
+          return <Product {...props} key={props.name} active={active} />;
+        })} */}
       </div>
-
-      <iframe
-        title="location map"
-        width="100%"
-        height="350"
-        frameBorder="0"
-        src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GOOGLE_KEY}&q=Palanga`}
-        allowFullScreen
-      ></iframe>
+      {location && (
+        <iframe
+          title="location map"
+          width="100%"
+          height="350"
+          frameBorder="0"
+          src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GOOGLE_KEY}&q=${location.name}`}
+          allowFullScreen
+        ></iframe>
+      )}
     </section>
   );
 };
