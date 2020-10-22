@@ -9,7 +9,7 @@ export const getLocationId = (location, history) => async (dispatch) => {
       method: "GET",
       headers: {
         "x-rapidapi-host": "tripadvisor1.p.rapidapi.com",
-        "x-rapidapi-key": `${REACT_APP_MY_API_KEY}`,
+        "x-rapidapi-key": `ba007034a5mshf6a03d14afcb21bp1eede9jsnd5b8f0f11eee`,
       },
     }
   );
