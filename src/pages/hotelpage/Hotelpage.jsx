@@ -27,8 +27,7 @@ const Hotelpage = ({ location }) => {
           method: "GET",
           headers: {
             "x-rapidapi-host": "tripadvisor1.p.rapidapi.com",
-            "x-rapidapi-key":
-              "d58457cc4amshb522060edfd8f2ap1eccd6jsn96c470d9bda1",
+            "x-rapidapi-key": `${process.env.REACT_APP_MY_API_KEY}`,
           },
         }
       );

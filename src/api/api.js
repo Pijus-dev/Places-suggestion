@@ -52,7 +52,7 @@ export const fetchAttractions = async (id) => {
       method: "GET",
       headers: {
         "x-rapidapi-host": "tripadvisor1.p.rapidapi.com",
-        "x-rapidapi-key": "ba007034a5mshf6a03d14afcb21bp1eede9jsnd5b8f0f11eee",
+        "x-rapidapi-key": `${process.env.REACT_APP_MY_API_KEY}`,
       },
     }
   );
@@ -83,8 +83,7 @@ export const fetchHotels = async (startDate, endDate, id, count) => {
         method: "GET",
         headers: {
           "x-rapidapi-host": "tripadvisor1.p.rapidapi.com",
-          "x-rapidapi-key":
-            "ba007034a5mshf6a03d14afcb21bp1eede9jsnd5b8f0f11eee",
+          "x-rapidapi-key": `${process.env.REACT_APP_MY_API_KEY}`,
         },
       }
     );
