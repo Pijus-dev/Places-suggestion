@@ -29,9 +29,9 @@
     "sweetalert": "^2.1.2"
   },
   "scripts": {
-    "dev": "env-cmd .env.development react-scripts start",
+    "dev": "env-cmd -f ./.env.development react-scripts start",
     "start": "serve -s build",
-    "build": "GENERATE_SOURCEMAP=false env-cmd .env.production react-scripts build",
+    "build": "env-cmd -f ./.env.production react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "heroku-postbuild": "npm run build"
