@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import Product from "../../components/product/Product";
 import { useParams } from "react-router-dom";
 import Calendar from "../../components/calendarPicker/Calendar";
-import { fetchHotels } from "../../api/api";
 
 import "./hotelpage.scss";
 
